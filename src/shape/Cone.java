@@ -22,14 +22,12 @@ public class Cone extends Shape
 	@Override
 	public double calcVolume()
 	{
-		// TODO Auto-generated method stub
 		return calcBaseArea() * getHeight() / 3;
 	}
 
 	@Override
 	public double calcBaseArea()
 	{
-		// TODO Auto-generated method stub
 		return Math.PI * radius * radius;
 	}
 	
