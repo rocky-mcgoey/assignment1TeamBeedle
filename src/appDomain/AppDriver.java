@@ -33,21 +33,8 @@ public class AppDriver
 		// refer to demo02 KittySort.java on how to use a custom sorting
 		// algorithm on a list of comparables to sort using either the
 		// natural order (comparable) or other orders (comparators)
-		Shape t = new TriangularPrism(4, 3);
-		System.out.println(t.toString());
-		Shape s = new SquarePrism(4, 3);
-		System.out.println(s.toString());
-		Shape p = new PentagonalPrism(4, 3);
-		System.out.println(p.toString());
-		Shape o = new OctagonalPrism(4, 3);
-		System.out.println(o.toString());
-		Shape c = new Cone(4, 3);
-		System.out.println(c.toString());
-		Shape b = new Cylinder(4, 3);
-		System.out.println(b.toString());
-		Shape py = new Pyramid(4, 3);
-		System.out.println(py.toString());
-		//new SortManager(args); // UNCOMMENT WHEN IM DONE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		
+		new SortManager(args);
 	}
 
 }
