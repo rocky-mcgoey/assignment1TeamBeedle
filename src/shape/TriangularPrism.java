@@ -1,6 +1,28 @@
 package shape;
 
-public class TriangularPrism
+public class TriangularPrism extends Prism
 {
+	//constructor
+	public TriangularPrism(double height, double side)
+	{
+		super(height, side);
+		
+	}
 
+	@Override
+	public double calcBaseArea()
+	{
+		double side = getSide();
+		return ((side * side) * Math.sqrt(3)) / 4.0;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("This is a Triangular Prism with\n"
+				+ "height: %f\n"
+				+ "side length: %f\n"
+				+ "base area: %f\n"
+				+ "Volume: %f\n", 
+				this.getHeight(), this.getSide(), this.calcBaseArea(), this.calcVolume());
+	}
 }

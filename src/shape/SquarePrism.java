@@ -16,4 +16,13 @@ public class SquarePrism extends Prism
 		return  side * side;
 	}
 
+	@Override
+		public String toString() {
+			return String.format("This is a Square Prism with\n"
+				+ "height: %f\n"
+				+ "side length: %f\n"
+				+ "base area: %f\n"
+				+ "Volume: %f\n", 
+				this.getHeight(), this.getSide(), this.calcBaseArea(), this.calcVolume());
+	}
 }

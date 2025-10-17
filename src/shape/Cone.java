@@ -33,5 +33,14 @@ public class Cone extends Shape
 		return Math.PI * radius * radius;
 	}
 	
-	// TODO toString()
+	@Override
+	public String toString() {
+		return String.format("This is a Cone with\n"
+			+ "height: %f\n"
+			+ "radius: %f\n"
+			+ "base area: %f\n"
+			+ "Volume: %f\n", 
+			this.getHeight(), this.getRadius(), this.calcBaseArea(), this.calcVolume());
+	}
+
 }

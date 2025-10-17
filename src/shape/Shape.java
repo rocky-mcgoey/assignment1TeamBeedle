@@ -25,11 +25,13 @@ public abstract class Shape implements Comparable<Shape>
 		return 0;
 	}
 	
+	@Override
+	public String toString() {
+		return String.format("This is a Shape with height: %d", this.getHeight());
+	}
+	
 	public abstract double calcVolume();
 	
 	public abstract double calcBaseArea();
-	
-	// TODO make a toString
-	
 	
 }
