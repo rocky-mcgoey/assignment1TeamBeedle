@@ -106,7 +106,7 @@ public class ConsoleDisplay {
             case 'q':
                 return "Quick Sort";
             case 'z':
-                return "Heap Sort"; // Or whatever your choice algorithm is
+                return "Heap Sort"; 
             default:
                 return "Unknown Sort";
         }
