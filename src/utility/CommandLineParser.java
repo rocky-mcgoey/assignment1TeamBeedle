@@ -14,7 +14,7 @@ public class CommandLineParser {
     private String errorMessage;
     
     /**
-     * Parses the command-line arguments.
+     * Parses the command-line command.
      * @param args The command-line arguments from main method
      */
     public CommandLineParser(String[] args) {
@@ -36,7 +36,7 @@ public class CommandLineParser {
     }
     
     /**
-     * Parses individual arguments from the command line.
+     * Parses aruments from command line, order insensitive
      * @param args The command-line arguments
      */
     private void parseArguments(String[] args) {
@@ -76,9 +76,9 @@ public class CommandLineParser {
      * Validates that all required arguments are present and valid.
      */
     private void validateArguments() {
-        if (hasErrors) return; // Already has an error
+        if (hasErrors) return; 
         
-        // Check if fileName is provided
+        // Check if fileName argument is present
         if (fileName == null || fileName.isEmpty()) {
             hasErrors = true;
             errorMessage = "Error: File name is required.\n" +
@@ -86,7 +86,7 @@ public class CommandLineParser {
             return;
         }
         
-        // Check if compareType is provided and valid
+        // Check if compareType is valid
         if (compareType == '\0') {
             hasErrors = true;
             errorMessage = "Error: Compare type is required.\n" +
@@ -102,7 +102,7 @@ public class CommandLineParser {
             return;
         }
         
-        // Check if sortType is provided and valid
+        // Check if sortType is valid
         if (sortType == '\0') {
             hasErrors = true;
             errorMessage = "Error: Sort type is required.\n" +

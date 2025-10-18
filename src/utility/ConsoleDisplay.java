@@ -26,13 +26,13 @@ public class ConsoleDisplay {
         
         String comparisonLabel = getComparisonLabel(compareType);
         
-        // Display first element
+        
         System.out.printf("First element is:%40s%20s: %.10g%n", 
             shapes[0].getClass().getName(), 
             comparisonLabel, 
             getComparisonValue(shapes[0], compareType));
         
-        // Display every 1000th element
+       
         for (int i = 1000; i < shapes.length; i += 1000) {
             System.out.printf("%d-th element:%40s%20s: %.10g%n", 
                 i, 
@@ -41,7 +41,7 @@ public class ConsoleDisplay {
                 getComparisonValue(shapes[i], compareType));
         }
         
-        // Display last element
+       
         System.out.printf("Last element is:%40s%20s: %.10g%n", 
             shapes[shapes.length - 1].getClass().getName(), 
             comparisonLabel, 
