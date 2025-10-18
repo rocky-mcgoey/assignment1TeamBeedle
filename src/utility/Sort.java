@@ -5,7 +5,13 @@ import java.util.Comparator;
 public class Sort
 {
 	// 2 different versions for each sort as methods
-	
+	/**
+	 * Bubble sort Algorithm
+	 * repeatedly steps  through the array, compares adjacent elements,
+	 * and swaps them if they are in the wrong order.
+	 * @param <T>
+	 * @param arr
+	 */
 	// Bubblesort taken from Lab 2 
 	public static <T extends Comparable<T>> void bubbleSort(T[] arr)
 	{
@@ -39,7 +45,14 @@ public class Sort
 	        }
 		}
 	}
-	
+	/**
+	 * Insertion Sort Algorithm
+	 * Builds the sorted portion of the array one element at a time.
+	 * each new element is compared with the sorted part and inserted into the correct position
+	 * 
+	 * @param <T>
+	 * @param arr
+	*/
 	// Insertion sort
 	public static <T extends Comparable<T>> void insertionSort(T[] arr)
 	{
@@ -75,6 +88,14 @@ public class Sort
         }
 	}
 	
+	/**
+	 * Selection Sort Algorithm
+	 * finds the smallest (or largest) element in the unsorted portion of the array
+	 * and swaps it with the first unsorted position
+	 * 
+	 * @param <T>
+	 * @param arr
+	*/
 	// Selection sort
 	public static <T extends Comparable<T>> void selectionSort(T[] arr)
 	{
@@ -112,6 +133,14 @@ public class Sort
         }
 	}
 	
+	/**
+	 * Merge Sort Algorithm
+	 * Splits the array into halves, recursively sorts each half, 
+	 * and then merges the sorted halves back together.
+	 * 
+	 * @param <T>
+	 * @param arr
+	*/
 	// Merge sort
 	public static <T extends Comparable<T>> void mergeSort(T[] arr)
 	{
@@ -163,6 +192,15 @@ public class Sort
 		while (j < left.length) arr[p++] = right[j++];
 	}
 	
+	/**
+	 * Quick Sort Algorithm
+	 * Selects a pivot element and partitions the array so that elements smaller than the pivot
+	 * are on one side and larger elements are on the other.
+	 * then it recursively sorts both sides
+	 * 
+	 * @param <T>
+	 * @param arr
+	*/
 	// Quick sort
 	public static <T extends Comparable<T>> void quickSort(T[] arr)
 	{
@@ -229,6 +267,14 @@ public class Sort
 			
 	}
 	
+	/**
+	 * Heap Sort Algorithm
+	 * Builds a max-heap from the array and repeatedly swaps the root (largest value)
+	 * with the last element in the heap, then reduces the heap size and restores heap order.
+	 * 
+	 * @param <T>
+	 * @param arr
+	*/
 	// Heap sort
 	public static <T extends Comparable<T>> void heapSort(T[] arr)
 	{
