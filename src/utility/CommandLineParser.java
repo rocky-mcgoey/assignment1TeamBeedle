@@ -48,7 +48,8 @@ public class CommandLineParser {
             String argLower = arg.toLowerCase();
             
             if (argLower.startsWith("-f")) {
-                fileName = arg.substring(2).trim();
+//                fileName = arg.substring(2).trim();
+                fileName = argLower.substring(2).trim();
                 // Remove quotes if present
                 if (fileName.startsWith("\"") && fileName.endsWith("\"")) {
                     fileName = fileName.substring(1, fileName.length() - 1);
