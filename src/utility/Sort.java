@@ -151,7 +151,7 @@ public class Sort
 		
 		// Divide array into two halves
 		for (int i = 0; i < left.length; i++) left[i] = arr[i];
-		for (int i = 0; i < right.length; i++) right[i] = arr[left.length + 1];
+		for (int i = 0; i < right.length; i++) right[i] = arr[left.length + i];
 		
 		// Recursively sort both halves
 		mergeSort(left);
@@ -165,7 +165,7 @@ public class Sort
 			else arr[p++] = right[j++];
 		}
 		while (i < left.length) arr[p++] = left[i++];
-		while (j < left.length) arr[p++] = right[j++];
+		while (j < right.length) arr[p++] = right[j++];
 	}
 	
 	public static <T> void mergeSort(T[]arr, Comparator<T> c)
@@ -177,7 +177,7 @@ public class Sort
 		
 		// Divide array into two halves
 		for (int i = 0; i < left.length; i++) left[i] = arr[i];
-		for (int i = 0; i < right.length; i++) right[i] = arr[left.length + 1];
+		for (int i = 0; i < right.length; i++) right[i] = arr[left.length + i];
 		
 		mergeSort(left, c);
 		mergeSort(right, c);
@@ -189,7 +189,7 @@ public class Sort
 			else arr[p++] = right[j++];
 		}
 		while (i < left.length) arr[p++] = left[i++];
-		while (j < left.length) arr[p++] = right[j++];
+		while (j < right.length) arr[p++] = right[j++];
 	}
 	
 	/**
@@ -223,12 +223,15 @@ public class Sort
 					swap (arr, i, j);
 				}
 				
-				swap (arr, i +1, high);
-				int p = i +1; 
-				
-				quickComparable(arr, low, p -1);
-				quickComparable(arr, p + 1, high);
+								
+
 			}
+			
+			swap (arr, i +1, high);
+			int p = i +1; 
+			
+			quickComparable(arr, low, p -1);
+			quickComparable(arr, p + 1, high);
 		}
 		// TODO Auto-generated method stub
 		
@@ -256,12 +259,13 @@ public class Sort
 					swap (arr, i, j);
 				}
 				
-				swap (arr, i +1, high);
-				int p = i +1; 
-				
-				quickComparator(arr, low, p -1, c);
-				quickComparator(arr, p + 1, high, c);
+
 			}
+			swap (arr, i +1, high);
+			int p = i +1; 
+			
+			quickComparator(arr, low, p -1, c);
+			quickComparator(arr, p + 1, high, c);
 		}
 			// TODO Auto-generated method stub
 			
@@ -282,7 +286,7 @@ public class Sort
 			return;
 		int n = arr.length;
 		//Build max heap
-		for (int start = n / 2 - 1; start <= 0; start--)
+		for (int start = n / 2 - 1; start >= 0; start--)
 		{
 			int i = start;
 			while (true)
@@ -336,7 +340,7 @@ public class Sort
 			return;
 		int n = arr.length;
 		
-		for (int start = n / 2 - 1; start <= 0; start--)
+		for (int start = n / 2 - 1; start >= 0; start--)
 		{
 			int i = start;
 			while (true)
@@ -372,7 +376,7 @@ public class Sort
 				
 				if(left < size && c.compare(arr[left], arr[largest]) > 0)
 					largest = left;
-				if(left < size && c.compare(arr[right], arr[largest]) > 0)
+				if(right < size && c.compare(arr[right], arr[largest]) > 0)
 					largest = right;
 				if (largest == i )
 					break;
