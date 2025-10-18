@@ -39,6 +39,21 @@ public class SortManager
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Runs one complete sorting operation on an array of shape objects
+	 * 1. Chooses which attribute to sort by based on users input
+	 * 
+	 * 2. creates the correct Comparator to compare shape objects in the descending order.
+	 * 
+	 * 3. calls the chosen sorting algorithm to sort the array
+	 * 
+	 * 4. measures how long the sorting takes, not including file I/O
+	 *
+	 * 
+	 * @param shapes the array of shape objects to be sorted
+	 * @param sortType the letter that indicates which sorting algorithm to use
+	 * @param sortBy the letter that indicates what property to sort by
+	 */
 	public static void runSort(Shape[] shapes, char sortType, char sortBy)
 	{
 		Comparator<Shape> cmp = null;
