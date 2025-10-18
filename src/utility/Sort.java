@@ -146,7 +146,9 @@ public class Sort
 	{
 		if (arr == null || arr.length < 2)
 			return;
+		@SuppressWarnings("unchecked")
 		T[] left = (T[]) new Object[arr.length / 2];
+		@SuppressWarnings("unchecked")
 		T[] right = (T[]) new Object[arr.length - left.length];
 		
 		// Divide array into two halves
@@ -168,6 +170,7 @@ public class Sort
 		while (j < right.length) arr[p++] = right[j++];
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static <T> void mergeSort(T[]arr, Comparator<T> c)
 	{
 		if (arr == null || arr.length < 2)
@@ -351,7 +354,7 @@ public class Sort
 				
 				if(left < n && c.compare(arr[left], arr[largest]) > 0)
 					largest = left;
-				if(left < n && c.compare(arr[right], arr[largest]) > 0)
+				if(right < n && c.compare(arr[right], arr[largest]) > 0)
 					largest = right;
 				if (largest == i )
 					break;
@@ -388,7 +391,7 @@ public class Sort
 	}
 
 // Helper method to save time for swapping in sorts
-private static <T> void swap(T[] arr, int j, int i)
+private static <T> void swap(T[] arr, int i, int j)
 {
 	T temp = arr[i];
 	arr[i] = arr [j];
