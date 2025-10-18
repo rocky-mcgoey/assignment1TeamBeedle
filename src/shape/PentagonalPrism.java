@@ -9,6 +9,10 @@ public class PentagonalPrism extends Prism
 		
 	}
 
+	/**
+	 * Calculates the base area of the shape. uses the formula: (5 * (side^2) * tan(54degrees)) /4
+	 * @return The base area of the shape.
+	 */
 	@Override
 	public double calcBaseArea()
 	{

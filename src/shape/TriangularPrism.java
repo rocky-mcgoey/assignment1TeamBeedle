@@ -9,6 +9,10 @@ public class TriangularPrism extends Prism
 		
 	}
 
+	/**
+	 * Calculates the base area of the shape. uses the formula: (side^2 * sqrt(3)) / 4
+	 * @return The base area of the shape.
+	 */
 	@Override
 	public double calcBaseArea()
 	{

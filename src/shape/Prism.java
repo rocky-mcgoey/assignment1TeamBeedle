@@ -19,6 +19,10 @@ public abstract class Prism extends Shape
 		return side;
 	}
 	
+	/**
+	 * Calculates the volume of the shape. Uses the formula: base area * height
+	 * @return The volume of the shape.
+	 */
 	@Override
 	public double calcVolume ()
 	{

@@ -9,6 +9,10 @@ public class SquarePrism extends Prism
 		
 	}
 
+	/**
+	 * Calculates the base area of the shape. uses the formula: side^2
+	 * @return The base area of the shape.
+	 */
 	@Override
 	public double calcBaseArea()
 	{

@@ -9,6 +9,10 @@ public class OctagonalPrism extends Prism
 		
 	}
 
+	/**
+	 * Calculates the base area of the shape. uses the formula: 2 * (1 + sqrt(2)) * (side^2)
+	 * @return The base area of the shape.
+	 */
 	@Override
 	public double calcBaseArea()
 	{
