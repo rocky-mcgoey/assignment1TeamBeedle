@@ -163,6 +163,180 @@ public class Sort
 		while (j < left.length) arr[p++] = right[j++];
 	}
 	
+	// Quick sort
+	public static <T extends Comparable<T>> void quickSort(T[] arr)
+	{
+		if ( arr == null || arr.length < 2)
+			return;
+		quickComparable(arr, 0, arr.length - 1);
+	}
+	
+	private static <T extends Comparable<T>> void quickComparable(T[] arr, int low, int high)
+	{
+		if (low < high)
+		{
+			T pivot = arr[high];
+			int i = low - 1;
+			for (int j = low; j < high; j++)
+			{
+				if (arr[j].compareTo(pivot) <= 0)
+				{
+					i++;
+					swap (arr, i, j);
+				}
+				
+				swap (arr, i +1, high);
+				int p = i +1; 
+				
+				quickComparable(arr, low, p -1);
+				quickComparable(arr, p + 1, high);
+			}
+		}
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public static <T> void quickSort(T[]arr, Comparator<T> c)
+	{
+		if ( arr == null || arr.length < 2)
+			return;
+		quickComparator(arr, 0, arr.length - 1, c);
+	}
+	
+	private static <T> void quickComparator(T[] arr, int low, int high, Comparator<T> c)
+	{
+		if (low < high)
+		{
+			T pivot = arr[high];
+			int i = low - 1;
+			for (int j = low; j < high; j++)
+			{
+				if (c.compare(arr[j], pivot) <= 0)
+				{
+					i++;
+					swap (arr, i, j);
+				}
+				
+				swap (arr, i +1, high);
+				int p = i +1; 
+				
+				quickComparator(arr, low, p -1, c);
+				quickComparator(arr, p + 1, high, c);
+			}
+		}
+			// TODO Auto-generated method stub
+			
+	}
+	
+	// Heap sort
+	public static <T extends Comparable<T>> void heapSort(T[] arr)
+	{
+		if (arr == null || arr.length < 2)
+			return;
+		int n = arr.length;
+		//Build max heap
+		for (int start = n / 2 - 1; start <= 0; start--)
+		{
+			int i = start;
+			while (true)
+			{
+				int left = 2 * i + 1;
+				int right = left + 1;
+				int largest = i;
+				
+				if(left < n && arr[left].compareTo(arr[largest]) > 0)
+					largest = left;
+				if(right < n && arr[right].compareTo(arr[largest]) > 0)
+					largest = right;
+				if(largest == i)
+					break;
+				
+				swap(arr, i, largest);
+				i = largest;
+			}
+		}
+		
+		//Extract max to end and re-sift
+		
+		for(int end = n - 1; end > 0; end--)
+		{
+			swap(arr, 0, end);
+			int size = end;
+			int i = 0;
+			while(true)
+			{
+				int left = 2 * i + 1;
+				int right = left + 1;
+				int largest = i;
+				
+				if (left < size && arr[left].compareTo(arr[largest]) > 0)
+					largest = left;
+				if(right < size && arr[right].compareTo(arr[largest]) > 0)
+					largest = right;
+				if (largest == i)
+					break;
+				
+				swap(arr, i, largest);
+				i = largest;
+			}
+		}
+		
+	}
+
+	public static <T> void heapSort(T[]arr, Comparator<T> c)
+	{
+		if (arr == null || arr.length < 2)
+			return;
+		int n = arr.length;
+		
+		for (int start = n / 2 - 1; start <= 0; start--)
+		{
+			int i = start;
+			while (true)
+			{
+				int left = 2 * i + 1;
+				int right = left + 1;
+				int largest = i;
+				
+				if(left < n && c.compare(arr[left], arr[largest]) > 0)
+					largest = left;
+				if(left < n && c.compare(arr[right], arr[largest]) > 0)
+					largest = right;
+				if (largest == i )
+					break;
+				
+				swap(arr, i, largest);
+				i = largest;
+				
+			}
+		}
+		
+		for(int end = n - 1; end > 0; end--)
+		{
+			swap(arr, 0, end);
+			int size = end;
+			int i = 0;
+			while(true)
+			{
+				int left = 2 * i + 1;
+				int right = left + 1;
+				int largest = i;
+				
+				
+				if(left < size && c.compare(arr[left], arr[largest]) > 0)
+					largest = left;
+				if(left < size && c.compare(arr[right], arr[largest]) > 0)
+					largest = right;
+				if (largest == i )
+					break;
+				
+				swap(arr, i, largest);
+				i = largest;
+			}
+		}
+	}
+
 // Helper method to save time for swapping in sorts
 private static <T> void swap(T[] arr, int j, int i)
 {
