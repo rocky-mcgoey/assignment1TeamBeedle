@@ -1,5 +1,10 @@
 package manager;
 
+import shape.*;
+import utility.Sort;
+
+import java.util.*;
+
 public class SortManager
 {
 	private String fileName;
@@ -33,5 +38,57 @@ public class SortManager
 		System.out.println("Sort Type is" + sortType);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public static void runSort(Shape[] shapes, char sortType, char sortBy)
+	{
+		Comparator<Shape> cmp = null;
+		switch(Character.toLowerCase(sortBy))
+		{
+		case 'h':
+			cmp = (s1, s2) -> Double.compare(s2.getHeight(), s1.getHeight());
+			break;
+		case 'v':
+			cmp = (s1, s2) -> Double.compare(s2.calcVolume(), s1.calcVolume());
+			break;
+		case 'a':
+			cmp = (s1, s2) -> Double.compare(s2.calcBaseArea(), s1.calcBaseArea());
+			break;
+		default:
+			System.out.println("Not a valid option for comparison. Use h, v, or a.");
+			return;
+		}
+		
+		long start = System.nanoTime();
+		
+		switch (Character.toLowerCase(sortType))
+		{
+		case 'b':
+			Sort.bubbleSort(shapes, cmp);
+			break;
+		case 'i':
+			Sort.insertionSort(shapes, cmp);
+			break;
+		case 's':
+			Sort.selectionSort(shapes, cmp);
+			break;
+		case 'm':
+			Sort.mergeSort(shapes, cmp);
+			break;
+		case 'q':
+			Sort.quickSort(shapes, cmp);
+			break;
+		case 'z':
+			Sort.heapSort(shapes, cmp);
+			break;
+		default:
+			System.out.println("Not a valid option for sort type. Use b,i, s, m , q, or z.");
+			return;
+		}
+		
+		long end = System.nanoTime();
+		long time = (end - start) / 1000000;
+	}
+	
+	
 
 }

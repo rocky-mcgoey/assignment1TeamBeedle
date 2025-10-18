@@ -94,7 +94,7 @@ public class Sort
         }
 	}
 	
-	public static <T> void SelectionSort(T[]arr, Comparator<T> c)
+	public static <T> void selectionSort(T[]arr, Comparator<T> c)
 	{
         if (arr == null || arr.length < 2) 
         	return;
