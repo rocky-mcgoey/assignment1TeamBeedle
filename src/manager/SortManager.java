@@ -1,6 +1,9 @@
 package manager;
 
 import shape.*;
+import utility.CommandLineParser;
+import utility.ConsoleDisplay;
+import utility.ShapeFileReader;
 import utility.Sort;
 
 import java.util.*;
@@ -13,30 +16,60 @@ public class SortManager
 
 	public SortManager(String[] args)
 	{
-		
+		// old
 		System.out.println(args[0]);
 		System.out.println(args[1]);
 		System.out.println(args[2]);
-		for (String arg : args)
-		{
-			if (arg.startsWith("-f") || arg.startsWith("-F"))
-			{
-				fileName = arg.substring(2);
-				
-			}
-			else if(arg.startsWith("-t") || arg.startsWith("-T"))
-			{
-				compareType = arg.substring(2).charAt(0);
-			}
-			else if(arg.startsWith("-s") || arg.startsWith("-S"))
-			{
-				sortType = arg.substring(3).charAt(0);
-			}
-		}
+		
+		
+		// new
+		CommandLineParser parser = new CommandLineParser(args);
+        
+        if (parser.hasErrors())
+        {
+            System.err.println(parser.getErrorMessage());
+            return;
+        }
+        
+        fileName = parser.getFileName();
+        compareType = parser.getCompareType();
+        sortType = parser.getSortType();
+		
+//		for (String arg : args)
+//		{
+//			if (arg.startsWith("-f") || arg.startsWith("-F"))
+//			{
+//				fileName = arg.substring(2);
+//				
+//			}
+//			else if(arg.startsWith("-t") || arg.startsWith("-T"))
+//			{
+//				compareType = arg.substring(2).charAt(0);
+//			}
+//			else if(arg.startsWith("-s") || arg.startsWith("-S"))
+//			{
+//				sortType = arg.substring(3).charAt(0);
+//			}
+//		}
 		System.out.println("File Name is" + fileName);
 		System.out.println("Compare Type is" + compareType);
 		System.out.println("Sort Type is" + sortType);
 		// TODO Auto-generated constructor stub
+		
+		// Read shapes from file
+        ShapeFileReader reader = new ShapeFileReader();
+        Shape[] shapes = reader.readShapes(fileName);
+        
+        if (shapes == null)
+        {
+            System.err.println(reader.getErrorMessage());
+            return;
+        }
+        
+        System.out.println("Successfully loaded " + shapes.length + " shapes from file.");
+        
+        // Perform the sort
+        runSort(shapes, sortType, compareType);
 	}
 	
 	/**
@@ -102,6 +135,10 @@ public class SortManager
 		
 		long end = System.nanoTime();
 		long time = (end - start) / 1000000;
+		
+		// Display results
+        String sortName = ConsoleDisplay.getSortName(sortType);
+        ConsoleDisplay.displayResults(shapes, sortBy, sortName, time);
 	}
 	
 	
